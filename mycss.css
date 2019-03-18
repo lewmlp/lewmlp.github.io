@@ -1,6 +1,17 @@
 img.DISP{
     float: left;
 }
+.TEXT{
+        display: flex;
+        justify-content: center;
+    }
+.TEXT div {
+    background: black;
+    color: white;
+    padding: 15px;
+    max-width: 125px;
+    margin: 5px;
+}
 
 @media screen and (max-width:720px) {
     img.DISP {
@@ -9,12 +20,6 @@ img.DISP{
         margin-left: auto;
         margin-right: auto; 
     }
-    .TEXT{
-        text-align: center;
-    }
-    .MyProfile{
-        display: inline-block;
-        text-align: left;
-    }
+
 
 }
