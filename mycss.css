@@ -1,6 +1,7 @@
 img.DISP{
     float: left;
 }
+
 @media screen and (max-width:720px) {
     img.DISP {
         float: none;
@@ -8,14 +9,12 @@ img.DISP{
         margin-left: auto;
         margin-right: auto; 
     }
+    .TEXT{
+        text-align: center;
+    }
     .MyProfile{
-        float: none;
-        display: block;
-        margin-left: auto;
-        margin-right: auto; 
+        display: inline-block;
+        text-align: left;
     }
-    .MyInformation{
-        margin-left: auto;
-        margin-right: auto;
-    }
+
 }
