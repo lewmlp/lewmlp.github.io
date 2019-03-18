@@ -1,8 +1,21 @@
-img{
+img.DISP{
     float: left;
 }
 @media screen and (max-width:720px) {
-    img {
-    float: none;
-}
+    img.DISP {
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; 
+    }
+    .MyProfile{
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; 
+    }
+    .MyInformation{
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
