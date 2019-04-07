@@ -32,10 +32,44 @@ window.onload = function(){
     request.open('GET', url, true);
     request.onload = function() {
         var event = JSON.parse(request.responseText);
-        context.font = "23px Comic Sans MS";
+        context.font = "20px Comic Sans MS";
         context.textAlign = "center";
-        context.strokeText(event.quote, canvas.width/2, canvas.height/2);
-    //context.strokeText(event.quote, 0, 10);
+        var text = event.quote.split(" ");
+        var k = parseInt(text.length / 4);
+        /**
+        if (text.length % 4 > 0){
+            k = k + 1;
+        }
+        **/
+        var i = 0;
+        var p = 0;
+        context.strokeStyle = "white";
+        context.shadowColor = "black";
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
+        context.shadowBlur = 50;
+        while (i <= k){
+            if (i != k){
+                context.strokeText(text[p] + " " + text[p + 1]  + " " + text[p + 2]  + " " + text[p + 3], canvas.width/2, (canvas.height/2)-(16*k)+(i+1)*30);
+            }
+            else{
+                if (text.length - i*4 == 1){
+                    context.strokeText(text[p], canvas.width/2, (canvas.height/2)-(16*k)+(i+1)*30);
+                }
+                if (text.length - i*4 == 2){
+                    context.strokeText(text[p] + " " + text[p + 1], canvas.width/2, (canvas.height/2)-(16*k)+(i+1)*30);
+                }
+                if (text.length - i*4 == 3){
+                    context.strokeText(text[p] + " " + text[p + 1]  + " " + text[p + 2], canvas.width/2, (canvas.height/2)-(16*k)+(i+1)*30);
+                }
+                if (text.length - i*4 == 4){
+                    context.strokeText(text[p] + " " + text[p + 1]  + " " + text[p + 2]  + " " + text[p + 3], canvas.width/2, (canvas.height/2)-(16*k)+(i+1)*30);
+                }
+            }
+            i = i + 1;
+            p = p + 4;
+        }
+        
     };
     request.send();
 }
