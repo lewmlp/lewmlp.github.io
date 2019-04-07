@@ -3,6 +3,7 @@ document.write("<canvas height='400' width='600' id='example'></canvas>");
 canvas = document.getElementById("example");
 context = canvas.getContext("2d");
 
+
 var img1 = new Image();
 img1.onload = function() {
     context.drawImage(img1, 0, 0);
@@ -25,14 +26,16 @@ img2.src = "https://source.unsplash.com/collection/1127160/300x200";
 img3.src = "https://source.unsplash.com/collection/1127155/300x200";
 img4.src = "https://source.unsplash.com/collection/1124353/300x200";
 
-var url = "http://quotes.stormconsultancy.co.uk/random.json";
-var request = new XMLHttpRequest();
-request.open('GET', url, true);
-request.onload = function() {
-    var event = JSON.parse(request.responseText);
-    alert(event.quote);
-    
-};
-request.send();
-
-
+window.onload = function(){
+    var url = "http://quotes.stormconsultancy.co.uk/random.json";
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.onload = function() {
+        var event = JSON.parse(request.responseText);
+        context.font = "23px Comic Sans MS";
+        context.textAlign = "center";
+        context.strokeText(event.quote, canvas.width/2, canvas.height/2);
+    //context.strokeText(event.quote, 0, 10);
+    };
+    request.send();
+}
