@@ -7,7 +7,7 @@
         exit();
     }
 
-    $sql = "SELECT * FROM news LIMIT 0, 2";
+    $sql = "SELECT * FROM news LIMIT 0, 10";
 
     $result = mysqli_query($link, $sql);
 
