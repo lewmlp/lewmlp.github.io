@@ -23,5 +23,15 @@
     <BR>
     <INPUT type="submit" value= "Добавить">
     </FORM>
+    <p>Удалить новости:</p>
+    <?php foreach($data as $new): ?>
+        <h1>Новость номер <?=$new["id"]?></h1>
+        <h2><?=$new["title"]?></h2>
+        <FORM method= "POST" action="delbd.php">
+        <input type="hidden" name="id" value="<? echo $new['id']?>" /> 
+        <input type="submit" value="Удалить"/>
+        </FORM>
+
+    <?php endforeach; ?>
 </body>
 </html>
