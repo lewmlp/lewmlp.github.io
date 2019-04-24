@@ -1,7 +1,19 @@
+function writebutton(RI){
+    var Button = document.createElement("button");
+    var Links = document.createElement("a");
+    Links.setAttribute("id", "download");
+    Links.setAttribute("download", "image.png");
+    Links.setAttribute("href", "");
+    Links.appendChild(Button);
+    document.body.appendChild(Links);
+    Links.href = RI;
+}
+
 document.write("<canvas height='400' width='600' id='example'></canvas>");
             
 canvas = document.getElementById("example");
 context = canvas.getContext("2d");
+
 
 
 var img1 = new Image();
@@ -69,6 +81,8 @@ img1.onload = function() {
                             i = i + 1;
                             p = p + 4;
                         }
+                        RI = canvas.toDataURL("image/png");
+                        writebutton(RI);
                     }
                 };
             };
