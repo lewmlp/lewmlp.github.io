@@ -26,3 +26,23 @@ var deleteButton = new Vue({
         }
     }
 });
+
+var currentSketch = new Vue({
+    el: '#currentSketch',
+    data: {
+        title: "",
+        text: "",
+    },
+    methods: {
+        updateMarkdowm: function () {
+            markdownText.text = markdown.toHTML(currentSketch.text);
+        }
+    }
+});
+
+var markdownText = new Vue({
+    el: '#markdownText',
+    data: {
+        text: markdown.toHTML(currentSketch.text)
+    }
+});
