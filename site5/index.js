@@ -14,3 +14,11 @@ db.connect(function(err, client){
         console.log('OK');
     });
 });
+
+application.get("/sketch", function(req, res) {
+    var collection = req.app.locals.collection;
+    collection.find({}).toArray(function(err, sketches){
+        if (err) return console.log(err);
+        res.send(sketches);
+    }); 
+});

@@ -27,6 +27,22 @@ var deleteButton = new Vue({
     }
 });
 
+var sketchList = new Vue({
+    el: '#sketchList',
+    data: {
+        sketches: null
+    },
+    methods: {
+        chooseSketch: function (event) {
+            currentId = event.srcElement.id;
+            var sketch = this.sketches.find(sketch => sketch._id === currentId);
+            currentSketch.title = sketch.title;
+            currentSketch.text = sketch.text;
+            markdownText.text = markdown.toHTML(currentSketch.text);
+        }
+    }
+});
+
 var currentSketch = new Vue({
     el: '#currentSketch',
     data: {
@@ -46,3 +62,17 @@ var markdownText = new Vue({
         text: markdown.toHTML(currentSketch.text)
     }
 });
+
+getSketches();
+
+function getSketches(){
+    $.ajax({
+        url: "/sketch",
+        contentType: "application/json",
+        method: "GET",
+        success: function (res) {
+            console.log(res);
+            sketchList.sketches = res;
+        }
+    })
+}

@@ -35,12 +35,21 @@
 		    	<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			    	Файлы
 			  	</button>
+			  	<ol class="dropdown-menu">
+		            <a class="dropdown-item" href="#" v-for="sketch in sketches" v-on:click="chooseSketch">
+		                <li v-bind:id="sketch._id">{{ sketch.title }}</li>              
+		            </a>
+		        </ol>
 	    	</div>
 		</div>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script src="script.js"></script>
+	<script src="https://unpkg.com/tooltip.js"></script>
+    <script src="https://unpkg.com/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
