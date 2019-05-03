@@ -4,7 +4,7 @@ var db = new mongoClient("mongodb://localhost:27017/", {useNewUrlParser: true});
 var objectId = require("mongodb").ObjectID;
 var application = express();
 var jsonParser = express.json();
-application.use(express.static(__dirname + "/static"));
+application.use(express.static('./public'));
 
 
 db.connect(function(err, client){
