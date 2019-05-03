@@ -9,12 +9,12 @@
 	    
 		<div class="row my-3" >
 			<div class="col-6">
-		      	<div  class="form-control" style="height: 100%"></div>
+		      	<div id="markdownText" v-html="text" class="form-control" style="height: 100%"></div>
 		    </div>
 			<div class="col-6">
 		      	<div id="currentSketch">
-			    	<input  class="row form-control ml-2 mb-3">
-			    	<textarea class="row form-control ml-2" style="height: 50vh"></textarea>
+			    	<input v-model="title" class="row form-control ml-2 mb-3">
+			    	<textarea v-model="text" v-on:input="updateMarkdowm" class="row form-control ml-2" style="height: 50vh"></textarea>
 	    		</div>
 		    </div>
 		</div>
