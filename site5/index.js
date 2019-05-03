@@ -27,6 +27,19 @@ application.post("/sketch", jsonParser, function(request, result){
     });
 });
 
+application.put("/sketch", jsonParser, function(request, res){
+    if(!request.body) return res.sendStatus(400);
+    console.log(request.body);
+    var title = request.body.title;
+    var text = request.body.text;
+    var id = new objectId(request.body.id);
+    var collection = request.app.locals.collection;
+    collection.findOneAndUpdate({_id: id}, { $set: {title: title, text: text}}, function(err, result) {
+        if (err) return console.log(err);
+        res.send("Изменено!");
+    });
+});
+
 application.get("/sketch", function(req, res) {
     var collection = req.app.locals.collection;
     collection.find({}).toArray(function(err, sketches){

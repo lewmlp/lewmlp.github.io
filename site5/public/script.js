@@ -13,7 +13,8 @@ var saveButton = new Vue({
     el: '#saveButton',
     methods: {
         saveSketch: function () {
-            alert("Сохранить");
+            if (currentId === null) return;
+            updateSketch(currentId, currentSketch.title, currentSketch.text);
         }
     }
 });
@@ -91,4 +92,22 @@ function postSketch(title, text) {
             location.href = "/";
         }
     })
+}
+
+function updateSketch(id, title, text) {
+    $.ajax({
+        url: "/sketch",
+        contentType: "application/json",
+        method: "PUT",
+        data: JSON.stringify({
+            id: id,
+            title: title,
+            text: text
+        }),
+        success: function (res) {
+            console.log(res);
+            location.href = "/";
+        }
+    })
+
 }
