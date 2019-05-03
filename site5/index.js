@@ -9,7 +9,7 @@ application.use(express.static('./public'));
 
 db.connect(function(err, client){
     if (err) return console.log(err);
-    application.locals.collection = client.db("lab5").collection("sketch");
+    application.locals.collection = client.db("labweb").collection("sketches");
     application.listen(3000, function(){
         console.log('OK');
     });

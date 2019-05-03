@@ -63,8 +63,6 @@ var markdownText = new Vue({
     }
 });
 
-getSketches();
-
 function getSketches(){
     $.ajax({
         url: "/sketch",
@@ -76,3 +74,5 @@ function getSketches(){
         }
     })
 }
+
+getSketches();
