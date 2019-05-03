@@ -15,6 +15,18 @@ db.connect(function(err, client){
     });
 });
 
+application.post("/sketch", jsonParser, function(request, result){
+    if(!request.body) return result.sendStatus(400);
+    console.log(request.body);
+    var title = request.body.title;
+    var text = request.body.text;
+    var collection = request.app.locals.collection;
+    collection.insertOne({title: title, text: text}, function(err, res){
+        if(err) return console.log(err);
+        result.send("Скетч добавлен!");
+    });
+});
+
 application.get("/sketch", function(req, res) {
     var collection = req.app.locals.collection;
     collection.find({}).toArray(function(err, sketches){

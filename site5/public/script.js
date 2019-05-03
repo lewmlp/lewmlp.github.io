@@ -4,7 +4,7 @@ var addButton = new Vue({
     el: '#addButton',
     methods: {
         addSketch: function () {
-           alert('Добавить');
+            postSketch("Новый файл", "#Пишите здесь");
         }
     }
 });
@@ -76,3 +76,19 @@ function getSketches(){
 }
 
 getSketches();
+
+function postSketch(title, text) {
+    $.ajax({
+        url: "/sketch",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({
+            title: title,
+            text: text,
+        }),
+        success: function (res) {
+            console.log(res);
+            location.href = "/";
+        }
+    })
+}
