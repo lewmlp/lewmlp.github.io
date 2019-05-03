@@ -40,6 +40,16 @@ application.put("/sketch", jsonParser, function(request, res){
     });
 });
 
+application.delete("/sketch", jsonParser, function(req, res){
+    var id = new objectId(req.body.id);
+    var collection = req.app.locals.collection;
+    collection.findOneAndDelete({_id: id}, function(err, result){
+        if (err) return console.log(err);    
+        res.send("Удалено!");
+    });
+    
+});
+
 application.get("/sketch", function(req, res) {
     var collection = req.app.locals.collection;
     collection.find({}).toArray(function(err, sketches){

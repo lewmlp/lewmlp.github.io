@@ -23,7 +23,8 @@ var deleteButton = new Vue({
     el: '#deleteButton',
     methods: {
         deleteSketch: function () {
-            alert("Удалить");
+            if (currentId === null) return;
+            deleteSketch(currentId);
         }
     }
 });
@@ -110,4 +111,19 @@ function updateSketch(id, title, text) {
         }
     })
 
+}
+
+function deleteSketch(id) {
+    $.ajax({
+        url: "/sketch",
+        contentType: "application/json",
+        method: "DELETE",
+        data: JSON.stringify({
+            id: id
+        }),
+        success: function (res) {
+            console.log(res);
+            location.href = "/";
+        }
+    })
 }
